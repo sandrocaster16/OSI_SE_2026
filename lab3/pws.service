@@ -1,0 +1,19 @@
+[Unit]
+Description=Process_Watcher_Service
+After=basic.target
+
+[Service]
+Type=simple
+ExecStart=/home/zxc/Desktop/Labs_OSI/lab3/pws /home/zxc/Desktop/Labs_OSI/lab3/qwe.txt
+Restart=on-failure
+RestartSec=5
+
+# reload
+ExecReload=/bin/kill -HUP $MAINPID
+
+# kill
+KillSignal=SIGTERM
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target

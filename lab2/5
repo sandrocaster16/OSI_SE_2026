@@ -1,0 +1,14 @@
+#!/bin/bash
+
+> killed.log
+
+n=$1
+
+ps --no-headers -axo etimes,pid,ppid | while read t p pp
+do
+    if [ "$t" -lt "$n" ] && [ "$p" != "$$" ] && [ "$pp" != "$$" ]
+    then
+        echo $p>>killed.log
+        kill "$p"
+    fi
+done

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+grep "VmRSS" /proc/[0-9]*/status | sort -k2n | tail -1

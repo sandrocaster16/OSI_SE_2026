@@ -1,0 +1,14 @@
+#!/bin/bash
+
+strace -e trace=network -o troubleshooting_network.log "$HOME/Desktop/Labs_OSI/lab2/troubleshooting_amd64" 2>q_network.txt
+strace -e trace=file -o troubleshooting_file.log "$HOME/Desktop/Labs_OSI/lab2/troubleshooting_amd64" 2>q_file.txt
+
+#openat(AT_FDCWD, "/home/zxc/requiredDir/requiredFile", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+
+mkdir -p $HOME/requiredDir
+touch $HOME/requiredDir/requiredFile
+
+$HOME/Desktop/Labs_OSI/lab2/troubleshooting_amd64 > q_out.txt &
+
+sleep 2
+kill -SIGUSR1 "$!"

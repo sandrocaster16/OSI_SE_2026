@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo >> QWE.txt
+
+cat QWE.txt | awk '{
+    print $3 $5
+}' | sed s/Parent_ProcessID=// | sed 's/Average_Running_Time=/ /' | awk '
+{
+    sum[$1] += $2
+}
+END {
+    for (ppid in sum)
+        print "Average_Running_Children_of_ParentID=" ppid " is " sum[ppid]
+}' | sort -n >> QWE.txt

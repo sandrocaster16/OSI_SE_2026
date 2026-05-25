@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ps -axo etimes,pid | head -2 | tail -1

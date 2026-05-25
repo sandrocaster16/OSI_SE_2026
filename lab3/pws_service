@@ -1,0 +1,39 @@
+#!/bin/bash
+
+PID_FILE="/tmp/pws.pid"
+EXEC_PATH="/home/zxc/Desktop/Labs_OSI/lab3/pws"
+TARGET_FILE="/home/zxc/Desktop/Labs_OSI/lab3/qwe.txt"
+
+case "$1" in
+start)
+    if [[ -f "$PID_FILE" ]]
+    then
+        echo "pws работает (PID: $(cat $PID_FILE))"
+    else
+        echo "запуск pws"
+        $EXEC_PATH "$TARGET_FILE" -d
+    fi
+;;
+stop)
+    if [[ -f "$PID_FILE" ]]
+    then
+        echo "останавка pws"
+        kill -TERM $(cat $PID_FILE)
+    else
+        echo "pws не запущен"
+    fi
+;;
+status)
+    if [[ -f "$PID_FILE" ]]
+    then
+        PID=$(cat $PID_FILE)
+
+        echo "pws работает (PID: $PID)"
+        kill -USR1 $PID
+        sleep 0.5
+        tail -n 1 /tmp/pws.log
+    else
+        echo "pws остановлен"
+    fi
+;;
+esac

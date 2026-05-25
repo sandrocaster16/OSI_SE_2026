@@ -1,0 +1,16 @@
+#!/bin/bash
+
+> QWE.txt
+
+for pid in /proc/[0-9]*
+do
+    sum_exec_runtime=$(grep -sE "sum_exec_runtime" $pid/sched | awk '{print $3}')
+    nr_switches=$(grep -sE "nr_switches" $pid/sched | awk '{print $3}')
+
+    if [[ "$nr_switches" -gt 0 ]]
+    then
+        art=$(awk -v sum="$sum_exec_runtime" -v n="$nr_switches" 'BEGIN {printf "%.5f", sum/n}')
+        ppid=$(grep -sE "^PPid:" $pid/status | awk '{print $2}')
+        echo -e "ProcessID=$pid\t: Parent_ProcessID=$ppid\t: Average_Running_Time=$art"
+    fi
+done | sed 's/Parent_ProcessID=/Parent_ProcessID= /' | sort -k4n | sed 's/Parent_ProcessID= /Parent_ProcessID=/' >> QWE.txt

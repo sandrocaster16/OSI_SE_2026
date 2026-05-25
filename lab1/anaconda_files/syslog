@@ -1,0 +1,126 @@
+10:00:00,001 INFO kernel:Boot sequence started
+10:00:00,145 DEBUG kernel:Initializing cgroups
+10:00:00,212 INFO kernel:Mounting proc filesystem
+10:00:00,398 INFO systemd:Starting udev service
+10:00:00,522 NOTICE systemd:Reached target Local File Systems
+10:00:00,689 INFO network:Bringing up interface eth0
+10:00:00,812 DEBUG network:Sending DHCPDISCOVER
+10:00:01,034 INFO network:DHCPACK received 192.168.1.10
+10:00:01,245 INFO storage:Probing disks
+10:00:01,398 INFO storage:Disk sda detected size=512GB
+10:00:01,522 WARNING storage:Disk sdb slow response
+10:00:01,744 ERROR storage:Read error on sector 2048
+10:00:01,889 NOTICE storage:Retrying sector read
+10:00:02,012 INFO storage:Sector read successful
+10:00:02,201 INFO installer:Starting package installation
+10:00:02,389 DEBUG installer:Resolving dependencies
+10:00:02,578 INFO installer:Dependency resolution complete
+10:00:02,744 INFO installer:Installing bash
+10:00:02,932 INFO installer:Installing coreutils
+10:00:03,145 INFO installer:Installing glibc
+10:00:03,312 WARNING installer:Slow mirror detected
+10:00:03,478 NOTICE installer:Switching mirror
+10:00:03,644 INFO installer:Downloading metadata
+10:00:03,889 DEBUG installer:Checksum verification started
+10:00:04,012 INFO installer:Checksum valid
+10:00:04,201 INFO security:Enabling SELinux
+10:00:04,345 DEBUG security:Loading policy modules
+10:00:04,578 INFO security:SELinux enforcing
+10:00:04,744 INFO users:Creating root user
+10:00:04,912 WARNING users:Weak password detected
+10:00:05,101 INFO users:Password accepted
+10:00:05,289 INFO services:Enabling sshd
+10:00:05,478 INFO services:Enabling NetworkManager
+10:00:05,644 DEBUG services:Writing systemd symlinks
+10:00:05,889 INFO bootloader:Installing GRUB
+10:00:06,012 INFO bootloader:Writing configuration
+10:00:06,245 ERROR bootloader:GRUB install failed on sdb
+10:00:06,412 NOTICE bootloader:Retrying installation on sda
+10:00:06,578 INFO bootloader:GRUB successfully installed
+10:00:06,744 INFO installer:Installation progress 25%
+10:00:06,889 INFO installer:Installation progress 40%
+10:00:07,012 INFO installer:Installation progress 55%
+10:00:07,245 INFO installer:Installation progress 70%
+10:00:07,412 INFO installer:Installation progress 85%
+10:00:07,578 INFO installer:Installation progress 100%
+10:00:07,744 INFO installer:Installation complete
+10:00:07,889 NOTICE installer:Reboot required
+10:00:08,012 INFO systemd:Stopping services
+10:00:08,145 DEBUG systemd:Unmounting filesystems
+10:00:08,312 INFO systemd:System halted
+10:00:08,478 INFO kernel:Shutdown complete
+10:00:08,644 INFO audit:Audit daemon started
+10:00:08,812 DEBUG audit:Loading audit rules
+10:00:09,034 INFO audit:Audit rules applied
+10:00:09,245 WARNING audit:Deprecated rule detected
+10:00:09,398 NOTICE audit:Ignoring deprecated rule
+10:00:09,522 INFO network:Interface eth1 detected
+10:00:09,744 DEBUG network:Configuring static IP
+10:00:09,889 INFO network:IP 10.0.0.15 assigned
+10:00:10,012 ERROR network:Gateway unreachable
+10:00:10,245 NOTICE network:Retrying gateway ping
+10:00:10,412 INFO network:Gateway reachable
+10:00:10,578 INFO storage:Creating partition /boot
+10:00:10,744 INFO storage:Formatting /boot ext4
+10:00:10,889 INFO storage:Creating partition /
+10:00:11,012 INFO storage:Formatting / xfs
+10:00:11,245 DEBUG storage:Mounting target filesystem
+10:00:11,412 INFO storage:Mounted at /mnt/sysimage
+10:00:11,578 WARNING kernel:CPU microcode outdated
+10:00:11,744 NOTICE kernel:Microcode update scheduled
+10:00:11,889 INFO kernel:Microcode updated
+10:00:12,012 INFO dbus:Starting D-Bus daemon
+10:00:12,245 DEBUG dbus:Registering service org.freedesktop.NetworkManager
+10:00:12,412 INFO dbus:Service registration complete
+10:00:12,578 ERROR dbus:Failed to acquire name org.example.Service
+10:00:12,744 NOTICE dbus:Name conflict resolved
+10:00:12,889 INFO installer:Post-install scripts running
+10:00:13,012 DEBUG installer:Executing script 01-setup.sh
+10:00:13,245 INFO installer:Script completed successfully
+10:00:13,412 WARNING installer:Non-zero exit detected in optional script
+10:00:13,578 INFO installer:Continuing installation
+10:00:13,744 INFO services:Starting firewalld
+10:00:13,889 DEBUG services:Applying firewall rules
+10:00:14,012 INFO services:Firewall active
+10:00:14,245 ERROR services:Failed to start chronyd
+10:00:14,412 NOTICE services:Retrying chronyd start
+10:00:14,578 INFO services:chronyd started
+10:00:14,744 INFO system:Timezone set to UTC
+10:00:14,889 DEBUG system:Writing /etc/localtime
+10:00:15,012 INFO system:Locale set to en_US.UTF-8
+10:00:15,245 WARNING system:Missing optional locale fr_FR
+10:00:15,412 INFO system:Generating initramfs
+10:00:15,578 INFO system:initramfs generation complete
+10:00:15,744 INFO installer:Cleaning up temporary files
+10:00:15,889 DEBUG installer:Removing /tmp/install.log
+10:00:16,012 INFO installer:Syncing disks
+10:00:16,245 INFO installer:System ready for reboot
+10:00:16,412 INFO monitor:Health check started
+10:00:16,578 DEBUG monitor:CPU usage 12%
+10:00:16,744 DEBUG monitor:Memory usage 48%
+10:00:16,889 INFO monitor:All systems nominal
+10:00:17,012 WARNING monitor:Disk latency high
+10:00:17,245 NOTICE monitor:Latency normalized
+10:00:17,412 ERROR monitor:Service nginx not responding
+10:00:17,578 NOTICE monitor:Restarting nginx
+10:00:17,744 INFO monitor:nginx running
+10:00:17,889 INFO security:Applying security updates
+10:00:18,012 DEBUG security:Checking CVE database
+10:00:18,245 INFO security:No critical vulnerabilities found
+10:00:18,412 INFO cleanup:Removing obsolete packages
+10:00:18,578 DEBUG cleanup:Package old-kernel removed
+10:00:18,744 INFO cleanup:System optimized
+10:00:18,889 INFO scheduler:Cron service started
+10:00:19,012 DEBUG scheduler:Scheduled job backup.sh
+10:00:19,245 INFO scheduler:backup.sh completed
+10:00:19,412 WARNING scheduler:backup.sh exceeded time threshold
+10:00:19,578 NOTICE scheduler:Alert sent to admin
+10:00:19,744 INFO power:AC power connected
+10:00:19,889 DEBUG power:Battery level 100%
+10:00:20,012 INFO power:Power management active
+10:00:20,245 ERROR power:Thermal threshold exceeded
+10:00:20,412 NOTICE power:Cooling system engaged
+10:00:20,578 INFO power:Temperature normalized
+10:00:20,744 INFO kernel:Finalizing shutdown
+10:00:20,889 INFO kernel:System halted successfully
+

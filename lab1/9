@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo cat $(sudo find /var/log/ -type f -name "*.log") | wc -l

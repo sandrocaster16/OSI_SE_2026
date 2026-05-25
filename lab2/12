@@ -1,0 +1,11 @@
+#!/bin/bash
+
+n=$1
+
+ps --no-headers -axo etimes,pid,nice | while read t p ni
+do
+    if [ "$t" -lt "$n" ] && [ "$p" != "$$" ] && [ "$pp" != "$$" ]
+    then
+        renice 0 -p "$p" 2>/dev/null
+    fi
+done

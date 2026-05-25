@@ -1,0 +1,14 @@
+#!/bin/bash
+
+qwe=""
+
+while true
+do
+read str
+if [[ "$str" = "q" ]]
+then break
+fi
+qwe+="$str "
+done
+
+echo $qwe
